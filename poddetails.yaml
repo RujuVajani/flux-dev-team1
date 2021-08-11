@@ -1,0 +1,15 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: podinfo1
+  namespace: team1
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: podinfo1
+  chart:
+    git: git@git.mydomain.com:cicd/gitops.git
+    path: charts/podinfo
+    ref: master
+  values:
+    replicaCount: 2

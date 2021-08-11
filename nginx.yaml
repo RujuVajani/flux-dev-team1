@@ -1,0 +1,25 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx
+  namespace: team1
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: nginx
+  chart:
+      git: git@gthub.com:helm/examples
+      path: charts/hello-world
+      ref: master
+  values:
+      replicaCount: 2
+      image:
+         repository: nginx
+#         tag: 1.0.0
+#  chart:
+#    repository: https://helm.github.io/examples
+#    path: examples/hello-world
+#    name: examples/hello-world
+#    ref: master
+#  values:
+#    replicaCount: 2
